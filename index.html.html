@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessible Photo Gallery</title>
     <style>
-        /* CSS cơ bản cho thư viện ảnh */
+    
         body {
             margin: 2%;
             border: 1px solid black;
@@ -34,14 +34,14 @@
         img {
             width: 95%;
         }
-        /* CSS để thấy rõ khi ảnh được chọn bằng bàn phím (Focus) */
+   
         img:focus {
             outline: 5px solid yellow; 
         }
     </style>
 
     <script>
-        /* --- Hàm cũ từ bài tập trước (Step 1) --- */
+    
         function upDate(previewPic) {
             // 1. Thay đổi url của background image
             document.getElementById('image').style.backgroundImage = "url('" + previewPic.src + "')";
@@ -50,17 +50,17 @@
         }
 
         function unDo() {
-            // 1. Trả lại url gốc
+         
             document.getElementById('image').style.backgroundImage = "url('')";
-            // 2. Trả lại text gốc
+   
             document.getElementById('image').innerHTML = "Hover over an image below to display here.";
         }
 
-        /* --- YÊU CẦU MỚI CỦA BÀI TẬP (Step 8 & 9) --- */
+  
         
-        // Step 9: Hàm thêm tabindex
+
         function addTabFocus() {
-            // Step 9a: Console log để kiểm tra hàm đã chạy chưa
+    
             console.log("Hàm addTabFocus đã được kích hoạt!");
 
             // Lấy tất cả các thẻ img trong class preview
@@ -68,7 +68,7 @@
 
             // Step 9b: Vòng lặp for duyệt qua từng ảnh
             for (var i = 0; i < images.length; i++) {
-                // Step 9c: Thêm thuộc tính tabindex
+          
                 images[i].setAttribute("tabindex", "0");
                 console.log("Đã thêm tabindex cho ảnh thứ " + (i+1));
             }
@@ -131,4 +131,5 @@
          onblur="unDo()">
 
 </body>
+
 </html>
