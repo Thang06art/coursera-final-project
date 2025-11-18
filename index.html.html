@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Photo Gallery</title>
+    <style>
+        /* CSS cơ bản cho thư viện ảnh */
+        body {
+            margin: 2%;
+            border: 1px solid black;
+            background-color: #b3b3b3;
+        }
+        #image {
+            line-height: 650px;
+            width: 575px;
+            height: 650px;
+            border: 5px solid black;
+            margin: 0 auto;
+            background-color: #8e68ff;
+            background-image: url('');
+            background-repeat: no-repeat;
+            color: #FFFFFF;
+            text-align: center;
+            background-size: 100%;
+            margin-bottom: 25px;
+            font-size: 150%;
+        }
+        .preview {
+            width: 10%;
+            margin-left: 17%;
+            border: 10px solid black;
+        }
+        img {
+            width: 95%;
+        }
+        /* CSS để thấy rõ khi ảnh được chọn bằng bàn phím (Focus) */
+        img:focus {
+            outline: 5px solid yellow; 
+        }
+    </style>
+
+    <script>
+        /* --- Hàm cũ từ bài tập trước (Step 1) --- */
+        function upDate(previewPic) {
+            // 1. Thay đổi url của background image
+            document.getElementById('image').style.backgroundImage = "url('" + previewPic.src + "')";
+            // 2. Thay đổi text
+            document.getElementById('image').innerHTML = previewPic.alt;
+        }
+
+        function unDo() {
+            // 1. Trả lại url gốc
+            document.getElementById('image').style.backgroundImage = "url('')";
+            // 2. Trả lại text gốc
+            document.getElementById('image').innerHTML = "Hover over an image below to display here.";
+        }
+
+        /* --- YÊU CẦU MỚI CỦA BÀI TẬP (Step 8 & 9) --- */
+        
+        // Step 9: Hàm thêm tabindex
+        function addTabFocus() {
+            // Step 9a: Console log để kiểm tra hàm đã chạy chưa
+            console.log("Hàm addTabFocus đã được kích hoạt!");
+
+            // Lấy tất cả các thẻ img trong class preview
+            var images = document.querySelectorAll(".preview"); 
+
+            // Step 9b: Vòng lặp for duyệt qua từng ảnh
+            for (var i = 0; i < images.length; i++) {
+                // Step 9c: Thêm thuộc tính tabindex
+                images[i].setAttribute("tabindex", "0");
+                console.log("Đã thêm tabindex cho ảnh thứ " + (i+1));
+            }
+        }
+    </script>
+</head>
+
+<body onload="addTabFocus()">
+
+    <div id="image">
+        Hover over an image below to display here.
+    </div>
+
+    <img class="preview" 
+         src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" 
+         alt="Salad xanh tươi ngon" 
+         onmouseover="upDate(this)" 
+         onmouseleave="unDo()"
+         onfocus="upDate(this)"
+         onblur="unDo()">
+
+    <img class="preview" 
+         src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" 
+         alt="Bánh Pizza phô mai" 
+         onmouseover="upDate(this)" 
+         onmouseleave="unDo()"
+         onfocus="upDate(this)"
+         onblur="unDo()">
+    
+    <img class="preview" 
+         src="https://images.unsplash.com/photo-1565958011703-44f9829ba187" 
+         alt="Bánh ngọt dâu tây" 
+         onmouseover="upDate(this)" 
+         onmouseleave="unDo()"
+         onfocus="upDate(this)"
+         onblur="unDo()">
+
+    <img class="preview" 
+         src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543" 
+         alt="Bữa sáng với trứng và bơ" 
+         onmouseover="upDate(this)" 
+         onmouseleave="unDo()"
+         onfocus="upDate(this)"
+         onblur="unDo()">
+
+    <img class="preview" 
+         src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445" 
+         alt="Bánh kếp mật ong" 
+         onmouseover="upDate(this)" 
+         onmouseleave="unDo()"
+         onfocus="upDate(this)"
+         onblur="unDo()">
+
+    <img class="preview" 
+         src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe" 
+         alt="Món Salad cầu vồng" 
+         onmouseover="upDate(this)" 
+         onmouseleave="unDo()"
+         onfocus="upDate(this)"
+         onblur="unDo()">
+
+</body>
+</html>
